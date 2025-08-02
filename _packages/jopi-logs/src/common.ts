@@ -38,7 +38,13 @@ export interface FileLogWriterParams {
      * A prefix and a suffix can be added.
      * The default is logfile.log
      */
-    fileName?: "server";
+    fileName?: string;
+
+    /**
+     * If true, the file content will be cleared when starting.
+     * Default is false.
+     */
+    clearFileOnStart?: boolean;
 
     /**
      * How to rotate the logs?

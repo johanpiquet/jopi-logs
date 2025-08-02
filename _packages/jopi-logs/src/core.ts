@@ -2,7 +2,7 @@
 
 import {type FileLogWriterParams, type LogEntry, type LogEntryFormater, LogLevel, type LogWriter} from "./common.ts";
 import {formater_simpleJson, formater_dateTypeTitleSourceData, formater_typeTitleSourceData_colored} from "./formaters.ts";
-import {isServerSide} from "jopi-node-space";
+import "jopi-node-space";
 
 //region Writers
 
@@ -440,7 +440,7 @@ export function deleteLogsOlderThan_hours(hours: number, logDir?: string) {
     }
 }
 
-if (isServerSide()) {
+if (NodeSpace.what.isServerSide) {
     // Calculating the path allows avoiding the bundler to include this dep automatically.
     const serverFilePath = "./server." + (import.meta.filename.split(".").pop());
 
@@ -463,46 +463,48 @@ export function newFileWriter_dateTypeTitleSourceData(params?: FileLogWriterPara
 
 //region Presets
 
-export async function useConsolePreset(useDelay=false, useWorker=false): Promise<void> {
+export function createWithConsolePreset(useDelay=false, useWorker=false): LogWriter {
     if (useWorker) {
         const workerWriter = newWorkerLogWriter(createWorker("./worker", {useConsole: true}));
 
         if (useDelay) {
-            setDefaultWriter(newLogDelayer(workerWriter));
+            return newLogDelayer(workerWriter);
         } else {
-            setDefaultWriter(workerWriter);
+            return workerWriter;
         }
-
-        // Allow the worker to init.
-        await NodeSpace.timer.tick(1);
     } else {
         if (useDelay) {
-            setDefaultWriter(newLogDelayer(newConsoleLogWriter()));
+            return newLogDelayer(newConsoleLogWriter());
         } else {
-            setDefaultWriter(newConsoleLogWriter());
+            return newConsoleLogWriter();
         }
     }
 }
 
-export async function useFilePreset(useDelay=false, useWorker=false, fileParams?: FileLogWriterParams): Promise<void> {
+export function useConsolePreset(useDelay=false, useWorker=false) {
+    setDefaultWriter(createWithConsolePreset(useDelay, useWorker));
+}
+
+export function createWithFilePreset(useDelay=false, useWorker=false, fileParams?: FileLogWriterParams): LogWriter {
     if (useWorker) {
         const workerWriter = newWorkerLogWriter(createWorker("./worker", {useFile: true, params: fileParams}));
 
         if (useDelay) {
-            setDefaultWriter(newLogDelayer(workerWriter));
+            return newLogDelayer(workerWriter);
         } else {
-            setDefaultWriter(workerWriter);
+            return workerWriter;
         }
-
-        // Allow the worker to init.
-        await NodeSpace.timer.tick(1);
     } else {
         if (useDelay) {
-            setDefaultWriter(newLogDelayer(newFileWriter(undefined, fileParams)));
+            return newLogDelayer(newFileWriter(undefined, fileParams));
         } else {
-            setDefaultWriter(newFileWriter_dateTypeTitleSourceData());
+            return newFileWriter_dateTypeTitleSourceData(fileParams);
         }
     }
+}
+
+export function useFilePreset(useDelay=false, useWorker=false, fileParams?: FileLogWriterParams) {
+    setDefaultWriter(createWithFilePreset(useDelay, useWorker, fileParams));
 }
 
 // Note: do nothing for Worker, must keep it inside

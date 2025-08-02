@@ -9,16 +9,22 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
 
+  "dependencies": {
+    "jopi-node-space": "latest"
+  },
+
   "devDependencies": {
     "@types/bun": "latest",
-    "typescript": "^5.8.3",
-    "jopi-node-space": "latest"
+    "typescript": "^5.8.3"
   },
 
   "scripts": {
     "bun-install": "bun install",
     "tsc": "tsc",
 
-    "npm-publish": "npm publish"
+    "npm-publish": "npm publish",
+
+    "bun link": "bun link",
+    "bun unlink": "bun unlink"
   }
 }

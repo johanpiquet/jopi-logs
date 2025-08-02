@@ -49,7 +49,7 @@ class FileLogWriter implements LogWriter, FileRotatorClient {
         this.maxFileSize_mb = params.maxFileSize_mb || 100;
 
         this.formater = formater;
-        this.fileStream = this.openFile();
+        this.fileStream = this.openFile(params.clearFileOnStart === true);
         if (this.rotate===LogFileRotate.ON_SIZE) addToFileRotator(this);
 
         // Use 'onAppExited' and not 'onAppExiting' to close
@@ -73,11 +73,17 @@ class FileLogWriter implements LogWriter, FileRotatorClient {
         this.declareOpen();
     }
 
-    private openFile(): fs.WriteStream {
+    private openFile(clearFileContent: boolean = false): fs.WriteStream {
         const logFile = path.join(this.logDir, this.fileName);
         this.currentFilePath = logFile;
 
         fs.mkdirSync(this.logDir, { recursive: true });
+
+        if (clearFileContent) {
+            try { fs.unlinkSync(logFile); }
+            catch {}
+        }
+
         return fs.createWriteStream(logFile, { flags: 'a' });
     }
 

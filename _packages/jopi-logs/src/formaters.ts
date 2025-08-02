@@ -1,10 +1,11 @@
-const RED = "\x1b[31m";
-const GREY = "\x1b[90m";
-const RESET = "\x1b[0m";
-const ORANGE = "\x1b[38;5;208m";
-const LIGHT_BLUE = "\x1b[96m";
-
 import {type LogEntry, type LogEntryFormater, LogLevel} from "./common.ts";
+
+const TERM = NodeSpace.term;
+const RED = TERM.C_RED;
+const ORANGE = TERM.C_ORANGE;
+const GREY = TERM.C_GREY;
+const LIGHT_BLUE = TERM.C_LIGHT_BLUE;
+const RESET = TERM.T_RESET;
 
 export function formatDate1(timeStamp: number): string {
     const date = new Date(timeStamp);
