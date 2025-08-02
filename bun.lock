@@ -6,9 +6,12 @@
     },
     "_packages/jopi-logs": {
       "name": "jopi-logs",
+      "version": "1.0.0",
+      "dependencies": {
+        "jopi-node-space": "latest",
+      },
       "devDependencies": {
         "@types/bun": "latest",
-        "jopi-node-space": "latest",
         "typescript": "^5.8.3",
       },
     },
@@ -186,7 +189,7 @@
 
     "jopi-logs-testserver": ["jopi-logs-testserver@workspace:_packages/jopi-logs-testserver"],
 
-    "jopi-node-space": ["jopi-node-space@0.0.1", "", {}, "sha512-rpQDt9h0j8NL4iJdk7yPpYe3NSnEgSCRfL9w05RmuPP33/xubfXQLhduMeUJ5J5dlGks1j6xfGk9nljsP80Hzw=="],
+    "jopi-node-space": ["jopi-node-space@0.0.2", "", {}, "sha512-bzB0oMqK+gYzlmwvkE+z6O9eUdYc/iHZmDY4Cu8zqxWB2nQTMh8rUgT8dofTfdDEf/tTiuhXiXo/xZ4KTK+sZQ=="],
 
     "nanoid": ["nanoid@3.3.11", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-N8SpfPUnUp1bK+PMYW8qSWdl9U+wwNWI4QKxOYDy9JAro3WMX7p2OeVRF9v+347pnakNevPmiHhNmZ2HbFA76w=="],
 
