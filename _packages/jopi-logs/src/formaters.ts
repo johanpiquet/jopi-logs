@@ -1,4 +1,5 @@
 import {type LogEntry, type LogEntryFormater, LogLevel} from "./common.ts";
+import "jopi-node-space";
 
 const TERM = NodeSpace.term;
 const RED = TERM.C_RED;
