@@ -10,7 +10,7 @@
   "types": "dist/index.d.ts",
 
   "dependencies": {
-    "jopi-node-space": "latest"
+    "jopi-node-space": "workspace:*"
   },
 
   "devDependencies": {
@@ -21,10 +21,6 @@
   "scripts": {
     "bun-install": "bun install",
     "tsc": "tsc",
-
-    "npm-publish": "npm publish",
-
-    "bun link": "bun link",
-    "bun unlink": "bun unlink"
+    "npm-publish": "npm publish"
   }
 }
