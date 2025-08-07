@@ -1,4 +1,4 @@
-## Jopi Logs
+# Jopi Logs
 
 ## What is Jopi Logs?
 
