@@ -22,5 +22,10 @@
     "bun-install": "bun install",
     "tsc": "tsc",
     "npm-publish": "npm publish"
+  },
+
+  "nodeSwitch": {
+    "node": "dist",
+    "bun": "src"
   }
 }

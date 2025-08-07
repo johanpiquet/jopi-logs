@@ -14,5 +14,10 @@
   "scripts": {
     "tsc": "tsc",
     "nodejs": "node ./test.js"
+  },
+
+  "nodeSwitch": {
+    "node": "dist",
+    "bun": "src"
   }
 }
