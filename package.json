@@ -4,6 +4,7 @@
   "name": "jopi-logs",
   "license": "MIT",
   "homepage": "https://github.com/johanpiquet/jopi-logs",
+  "keywords": ["logs"],
 
   "type": "module",
   "main": "dist/index.js",
@@ -19,7 +20,6 @@
   },
 
   "scripts": {
-    "bun-install": "bun install",
     "tsc": "tsc",
     "npm-publish": "npm publish"
   },
