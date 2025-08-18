@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "private": false,
   "name": "jopi-logs",
   "license": "MIT",
@@ -13,7 +13,7 @@
   "engines": {"bun": "^1.2.18", "node": ">=22.18.0"},
 
   "dependencies": {
-    "jopi-node-space": "workspace:*"
+    "jopi-node-space": "latest"
   },
 
   "devDependencies": {
@@ -23,7 +23,8 @@
 
   "scripts": {
     "tsc": "tsc",
-    "npm-publish": "npm publish"
+    "bun-install": "bun install",
+    "bun-publish": "tsc; bun publish"
   },
 
   "nodeSwitch": {
