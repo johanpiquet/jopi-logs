@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "name": "jopi-logs",
   "license": "MIT",
@@ -9,6 +9,8 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+
+  "engines": {"bun": "^1.2.18", "node": ">=22.18.0"},
 
   "dependencies": {
     "jopi-node-space": "workspace:*"
