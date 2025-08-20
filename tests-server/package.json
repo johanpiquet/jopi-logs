@@ -2,7 +2,8 @@
   "name": "jopi-logs-testserver",
 
   "type": "module",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
 
   "devDependencies": {
     "@types/bun": "latest",
@@ -18,5 +19,5 @@
   "nodeSwitch": {
     "node": "dist",
     "bun": "src"
-  },"types": ""
+  }
 }
