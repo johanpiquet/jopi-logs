@@ -17,12 +17,11 @@
   },
 
   "devDependencies": {
-    "@types/bun": "latest",
-    "typescript": "^5.8.3"
+    "@types/bun": "latest"
   },
 
   "scripts": {
-    "tsc": "tsc",
+    "tsc": "npx tsc",
     "bun-publish": "tsc; bun publish"
   },
 
